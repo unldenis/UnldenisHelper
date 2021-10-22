@@ -19,7 +19,7 @@ public class PlayerListeners implements Listener {
 /*
     And in the main class:
 */
-getServer().getPluginManager().registerEvents(new PlayerListeners(this), this);
+getServer().getPluginManager().registerEvents(new PlayerListeners(), plugin);
 ```
 <br><br>
 Using my library, these few lines of code will suffice for you to insert into any method!
