@@ -32,4 +32,28 @@
         </dependency>
     </dependencies>
 
+    <name>${project.groupId}:${project.artifactId}</name>
+    <description>Library that increases productivity in the production of spigot plugins.</description>
+    <url>https://github.com/unldenis/UnldenisHelper</url>
+
+    <licenses>
+        <license>
+            <name>The Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <name>Denis Mehilli</name>
+            <email>mehillideny13@gmail.com</email>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git://github.com/unldenis/UnldenisHelper.git</connection>
+        <developerConnection>scm:git:ssh://github.com:unldenis/UnldenisHelper.git</developerConnection>
+        <url>https://github.com/unldenis/UnldenisHelper</url>
+    </scm>
+
 </project>
