@@ -31,3 +31,13 @@ Events.subscribe(PlayerMoveEvent.class)
     event.getPlayer().sendMessage("You moved an entire block");
 }).bind(plugin);
 ```
+<br><br>
+<b>Commands</b>
+<br>
+```java
+Commands.create("hi").handle(((sender, args) -> {
+    if(sender instanceof Player player && player.hasPermission("plugin.admin")) {
+        player.sendMessage("Hi " + player.getName());
+    }
+})).bind(plugin);
+```
