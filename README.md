@@ -2,6 +2,8 @@
 
 Library that increases productivity in the production of spigot plugins.
 <br><br>
+<b>Events</b>
+<br>
 Classic use of the Spigotmc-api: 
 ```java
 //imports
@@ -17,15 +19,15 @@ public class PlayerListeners implements Listener {
 /*
     And in the main class:
 */
-    getServer().getPluginManager().registerEvents(new PlayerListeners(this), this);
+getServer().getPluginManager().registerEvents(new PlayerListeners(this), this);
 ```
 <br><br>
 Using my library, these few lines of code will suffice for you to insert into any method!
 ```java
-    Events.subscribe(PlayerMoveEvent.class)
-    .filter(e -> !e.getPlayer().hasPermission("plugin.admin"))
-    .filter(e -> e.getFrom().getX() != e.getTo().getX() || e.getFrom().getZ() != e.getTo().getZ())
-    .handler(event -> {
-        event.getPlayer().sendMessage("You moved an entire block");
-    }).bind(plugin);
+Events.subscribe(PlayerMoveEvent.class)
+.filter(e -> !e.getPlayer().hasPermission("plugin.admin"))
+.filter(e -> e.getFrom().getX() != e.getTo().getX() || e.getFrom().getZ() != e.getTo().getZ())
+.handler(event -> {
+    event.getPlayer().sendMessage("You moved an entire block");
+}).bind(plugin);
 ```
