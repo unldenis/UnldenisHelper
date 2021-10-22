@@ -4,7 +4,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.WorldCreator;
 
-public class WorldUtils {
+public class WorldUtil {
     /**
      * Unloading maps, to rollback maps. Will delete all player builds until last server save
      * @param mapname name of the world
