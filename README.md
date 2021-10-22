@@ -2,7 +2,7 @@
 
 Library that increases productivity in the production of spigot plugins.
 <br><br>
-Events
+<b>Events</b>
 <br>
 Classic use of the Spigotmc-api: 
 ```java
