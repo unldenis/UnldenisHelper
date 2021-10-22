@@ -4,7 +4,7 @@ import org.bukkit.event.*;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import javax.annotation.Nonnull;
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
 
@@ -13,7 +13,7 @@ public class CEvent<T extends Event> implements Listener {
 
     private Class clazz;
     private Consumer consumer;
-    private ArrayList<Predicate> predicates = new ArrayList<>();
+    private HashSet<Predicate> predicates = new HashSet<>();
 
     public <T extends Event> CEvent(@Nonnull Class<T> clazz) {
         this.clazz = clazz;
