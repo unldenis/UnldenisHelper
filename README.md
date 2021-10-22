@@ -4,11 +4,7 @@ Library that increases productivity in the production of spigot plugins.
 <br><br>
 Classic use of the Spigotmc-api: 
 ```java
-import com.github.unldenis.Archery;
-import com.github.unldenis.gamelogic.Game;
-import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
+//imports
 public class PlayerQuitEvent(Archery plugin) implements Listener {
     @EventHandler
     public void onQuit(org.bukkit.event.player.PlayerQuitEvent event) {
