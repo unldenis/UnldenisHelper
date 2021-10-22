@@ -9,7 +9,7 @@ import java.util.function.Consumer;
 import java.util.function.Predicate;
 
 
-public class CEvent<T extends Event> implements Listener {
+public final class CEvent<T extends Event> implements Listener {
 
     private Class clazz;
     private Consumer consumer;
