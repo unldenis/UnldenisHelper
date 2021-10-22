@@ -1,8 +1,8 @@
 # UnldenisHelper
 
 Library that increases productivity in the production of spigot plugins.
-<br>
-Classic use of the library: 
+<br><br>
+Classic use of the Spigotmc-api: 
 ```java
 import com.github.unldenis.Archery;
 import com.github.unldenis.gamelogic.Game;
