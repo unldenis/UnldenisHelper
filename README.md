@@ -1,8 +1,9 @@
 # UnldenisHelper
 
 Library that increases productivity in the production of spigot plugins.
-<h2>Events</h2>
-<br><br><br><br><br><br>
+<br><br>
+Events
+<br>
 Classic use of the Spigotmc-api: 
 ```java
 //imports
