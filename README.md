@@ -13,9 +13,10 @@ public class PlayerListeners implements Listener {
         event.getPlayer().sendMessage("You moved an entire block");
     }
 }
-```
-And in the main class:
-```java
+
+/*
+    And in the main class:
+*/
     getServer().getPluginManager().registerEvents(new PlayerListeners(this), this);
 ```
 <br><br>
