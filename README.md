@@ -5,14 +5,20 @@ Library that increases productivity in the production of spigot plugins.
 Classic use of the Spigotmc-api: 
 ```java
 //imports
-public class PlayerQuitEvent implements Listener {
+public class PlayerListeners implements Listener {
     @EventHandler
-    public void onQuit(org.bukkit.event.player.PlayerQuitEvent event) {
-        final Player player = event.getPlayer();
-        Game game = plugin.getGameManager().findGame(player);
-        if(game==null) return;
-        event.setQuitMessage(null);
-        game.quit(player, true);
+    public void onQuit(PlayerMoveEvent event) {
+        if(!e.getPlayer().hasPermission("plugin.admin")) return;
+        if(e.getFrom().getX() != e.getTo().getX() || e.getFrom().getZ() != e.getTo().getZ()) return;
+        event.getPlayer().sendMessage("You moved an entire block");
     }
 }
+```
+```java
+Events.subscribe(PlayerMoveEvent.class)
+.filter(e -> !e.getPlayer().hasPermission("plugin.admin"))
+.filter(e -> e.getFrom().getX() != e.getTo().getX() || e.getFrom().getZ() != e.getTo().getZ())
+.handler(event -> {
+    event.getPlayer().sendMessage("You moved an entire block");
+}).bind(plugin);
 ```
