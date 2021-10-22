@@ -39,5 +39,5 @@ Commands.create("hi").handle(((sender, args) -> {
     if(sender instanceof Player player && player.hasPermission("plugin.admin")) {
         player.sendMessage("Hi " + player.getName());
     }
-})).bind(this);
+})).bind(plugin);
 ```
