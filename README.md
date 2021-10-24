@@ -29,15 +29,15 @@ Events.subscribe(PlayerMoveEvent.class)
 .filter(e -> e.getFrom().getX() != e.getTo().getX() || e.getFrom().getZ() != e.getTo().getZ())
 .handler(event -> {
     event.getPlayer().sendMessage("You moved an entire block");
-}).bind(plugin);
+}).bindWith(plugin);
 ```
 <br><br>
 <b>Commands</b>
 <br>
 ```java
-Commands.create("hi").handle(((sender, args) -> {
+Commands.create("hi").handler(((sender, args) -> {
     if(sender instanceof Player player && player.hasPermission("plugin.admin")) {
         player.sendMessage("Hi " + player.getName());
     }
-})).bind(plugin);
+})).bindWith(plugin);
 ```
