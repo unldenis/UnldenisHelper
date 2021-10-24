@@ -29,22 +29,14 @@ public abstract class Menu implements InventoryHolder {
         Events.subscribe(InventoryClickEvent.class)
         .handler(e -> {
             InventoryHolder holder = e.getInventory().getHolder();
-            //If the inventoryholder of the inventory clicked on
-            // is an instance of Menu, then gg. The reason that
-            // an InventoryHolder can be a Menu is because our Menu
-            // class implements InventoryHolder!!
             if (holder instanceof Menu) {
-                e.setCancelled(true); //prevent them from fucking with the inventory
-                if (e.getCurrentItem() == null) { //deal with null exceptions
+                e.setCancelled(true);
+                if (e.getCurrentItem() == null)
                     return;
-                }
-                //Since we know our inventoryholder is a menu, get the Menu Object representing
-                // the menu we clicked on
                 Menu menu = (Menu) holder;
-                //Call the handleMenu object which takes the event and processes it
                 menu.handleMenu(e);
             }
-        }).bind(javaPlugin);
+        }).bindWith(javaPlugin);
     }
 
     //Protected values that can be accessed in the menus
@@ -58,7 +50,7 @@ public abstract class Menu implements InventoryHolder {
      * we have information on who's menu this is and what
      * info is to be transfered.
      */
-    public Menu(Player player) { this.player = player; }
+    public Menu(@Nonnull Player player) { this.player = player; }
 
     /**
      *  let each menu decide their name

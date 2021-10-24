@@ -43,8 +43,8 @@ public final class CEvent<T extends Event> implements Listener {
      * Method used to register the event
      * @param plugin main class of a plugin
      */
-    public void bind(@Nonnull JavaPlugin plugin) {
-        bind(plugin, EventPriority.NORMAL);
+    public void bindWith(@Nonnull JavaPlugin plugin) {
+        bindWith(plugin, EventPriority.NORMAL);
     }
 
     /**
@@ -52,7 +52,7 @@ public final class CEvent<T extends Event> implements Listener {
      * @param plugin main class of a plugin
      * @param eventPriority event priority
      */
-    public void bind(@Nonnull JavaPlugin plugin, @Nonnull EventPriority eventPriority) {
+    public void bindWith(@Nonnull JavaPlugin plugin, @Nonnull EventPriority eventPriority) {
         Bukkit.getServer().getPluginManager().registerEvent(clazz, this, eventPriority, (listener, event) -> {
             boolean v = true;
             for(Predicate predicate: predicates) {

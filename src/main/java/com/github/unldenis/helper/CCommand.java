@@ -24,7 +24,7 @@ public final class CCommand implements CommandExecutor {
      * @param biConsumer the biconsumer from the sender and the arguments
      * @return the same object
      */
-    public CCommand handle(@Nonnull BiConsumer<CommandSender, String[]> biConsumer) {
+    public CCommand handler(@Nonnull BiConsumer<CommandSender, String[]> biConsumer) {
         this.biConsumer = biConsumer;
         return this;
     }
@@ -40,7 +40,7 @@ public final class CCommand implements CommandExecutor {
      * Method used to register the command
      * @param plugin main class of a plugin
      */
-    public void bind(@Nonnull JavaPlugin plugin) {
+    public void bindWith(@Nonnull JavaPlugin plugin) {
         plugin.getCommand(command).setExecutor(this);
     }
 }
