@@ -31,8 +31,11 @@ public final class CCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        biConsumer.accept(sender, args);
-        return true;
+        if(cmd.getName().equalsIgnoreCase(command)) {
+            biConsumer.accept(sender, args);
+            return true;
+        }
+        return false;
     }
 
 
