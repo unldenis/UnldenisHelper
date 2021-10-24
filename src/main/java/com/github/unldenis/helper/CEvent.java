@@ -54,15 +54,17 @@ public final class CEvent<T extends Event> implements Listener {
      */
     public void bindWith(@Nonnull JavaPlugin plugin, @Nonnull EventPriority eventPriority) {
         Bukkit.getServer().getPluginManager().registerEvent(clazz, this, eventPriority, (listener, event) -> {
-            boolean v = true;
-            for(Predicate predicate: predicates) {
-                if (!predicate.test(event)) {
-                    v = false;
-                    break;
+            if(event.getEventName().equals(clazz.getSimpleName())) {  //EntityDeathEvent conflict with PlayerDeathEvent fix
+                boolean v = true;
+                for(Predicate predicate: predicates) {
+                    if (!predicate.test((T) event)) {
+                        v = false;
+                        break;
+                    }
                 }
+                if(v)
+                    consumer.accept((T) event);
             }
-            if(v)
-                consumer.accept(event);
         }, plugin);
     }
 }
