@@ -4,9 +4,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>io.github.unldenis</groupId>
+    <groupId>com.github.unldenis</groupId>
     <artifactId>UnldenisHelper</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
 
     <properties>
         <maven.compiler.source>15</maven.compiler.source>
@@ -36,13 +36,6 @@
     <description>Library that increases productivity in the production of spigot plugins.</description>
     <url>https://github.com/unldenis/UnldenisHelper</url>
 
-    <licenses>
-        <license>
-            <name>The Apache License, Version 2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-        </license>
-    </licenses>
-
     <developers>
         <developer>
             <name>Denis Mehilli</name>
@@ -50,10 +43,21 @@
         </developer>
     </developers>
 
-    <scm>
-        <connection>scm:git:git://github.com/unldenis/UnldenisHelper.git</connection>
-        <developerConnection>scm:git:ssh://github.com:unldenis/UnldenisHelper.git</developerConnection>
-        <url>https://github.com/unldenis/UnldenisHelper</url>
-    </scm>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <compilerArgument>-proc:none</compilerArgument>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
