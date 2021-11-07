@@ -36,7 +36,11 @@
             <version>1.18.22</version>
             <scope>provided</scope>
         </dependency>
-
+        <dependency>
+            <groupId>com.google.auto.service</groupId>
+            <artifactId>auto-service</artifactId>
+            <version>1.0</version>
+        </dependency>
     </dependencies>
 
     <name>${project.groupId}:${project.artifactId}</name>
