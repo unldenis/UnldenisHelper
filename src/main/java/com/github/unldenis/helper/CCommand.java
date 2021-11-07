@@ -1,11 +1,11 @@
 package com.github.unldenis.helper;
 
+import lombok.NonNull;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import javax.annotation.Nonnull;
 import java.util.function.BiConsumer;
 
 public final class CCommand implements CommandExecutor {
@@ -14,7 +14,7 @@ public final class CCommand implements CommandExecutor {
     private final String command;
     private BiConsumer<CommandSender,String[]> biConsumer;
 
-    public CCommand(@Nonnull String command) {
+    public CCommand(@NonNull String command) {
         this.command = command;
     }
 
@@ -24,7 +24,7 @@ public final class CCommand implements CommandExecutor {
      * @param biConsumer the biconsumer from the sender and the arguments
      * @return the same object
      */
-    public CCommand handler(@Nonnull BiConsumer<CommandSender, String[]> biConsumer) {
+    public CCommand handler(@NonNull BiConsumer<CommandSender, String[]> biConsumer) {
         this.biConsumer = biConsumer;
         return this;
     }
@@ -43,7 +43,7 @@ public final class CCommand implements CommandExecutor {
      * Method used to register the command
      * @param plugin main class of a plugin
      */
-    public void bindWith(@Nonnull JavaPlugin plugin) {
+    public void bindWith(@NonNull JavaPlugin plugin) {
         plugin.getCommand(command).setExecutor(this);
     }
 }

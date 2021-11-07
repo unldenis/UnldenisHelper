@@ -1,9 +1,9 @@
 package com.github.unldenis.helper;
+import lombok.NonNull;
 import org.bukkit.Bukkit;
 import org.bukkit.event.*;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import javax.annotation.Nonnull;
 import java.util.HashSet;
 import java.util.function.Consumer;
 import java.util.function.Predicate;
@@ -15,7 +15,7 @@ public final class CEvent<T extends Event> implements Listener {
     private Consumer consumer;
     private HashSet<Predicate> predicates = new HashSet<>();
 
-    public <T extends Event> CEvent(@Nonnull Class<T> clazz) {
+    public <T extends Event> CEvent(@NonNull Class<T> clazz) {
         this.clazz = clazz;
     }
 
@@ -24,7 +24,7 @@ public final class CEvent<T extends Event> implements Listener {
      * @param filter the predicate to apply to the event
      * @return the same object
      */
-    public CEvent<T> filter(@Nonnull Predicate<T> filter) {
+    public CEvent<T> filter(@NonNull Predicate<T> filter) {
         predicates.add(filter);
         return this;
     }
@@ -34,7 +34,7 @@ public final class CEvent<T extends Event> implements Listener {
      * @param consumer what will be done
      * @return the same object
      */
-    public CEvent<T> handler(@Nonnull Consumer<T> consumer) {
+    public CEvent<T> handler(@NonNull Consumer<T> consumer) {
         this.consumer = consumer;
         return this;
     }
@@ -43,7 +43,7 @@ public final class CEvent<T extends Event> implements Listener {
      * Method used to register the event
      * @param plugin main class of a plugin
      */
-    public void bindWith(@Nonnull JavaPlugin plugin) {
+    public void bindWith(@NonNull JavaPlugin plugin) {
         bindWith(plugin, EventPriority.NORMAL);
     }
 
@@ -52,7 +52,7 @@ public final class CEvent<T extends Event> implements Listener {
      * @param plugin main class of a plugin
      * @param eventPriority event priority
      */
-    public void bindWith(@Nonnull JavaPlugin plugin, @Nonnull EventPriority eventPriority) {
+    public void bindWith(@NonNull JavaPlugin plugin, @NonNull EventPriority eventPriority) {
         Bukkit.getServer().getPluginManager().registerEvent(clazz, this, eventPriority, (listener, event) -> {
             if(event.getEventName().equals(clazz.getSimpleName())) {  //EntityDeathEvent conflict with PlayerDeathEvent fix
                 boolean v = true;

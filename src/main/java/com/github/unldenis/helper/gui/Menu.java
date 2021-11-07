@@ -1,6 +1,7 @@
 package com.github.unldenis.helper.gui;
 
 import com.github.unldenis.helper.Events;
+import lombok.NonNull;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -11,7 +12,6 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import javax.annotation.Nonnull;
 import java.util.Arrays;
 
 /**
@@ -25,7 +25,7 @@ public abstract class Menu implements InventoryHolder {
      * Just run it once.
      * @param javaPlugin
      */
-    public static void register(@Nonnull JavaPlugin javaPlugin) {
+    public static void register(@NonNull JavaPlugin javaPlugin) {
         Events.subscribe(InventoryClickEvent.class)
         .handler(e -> {
             InventoryHolder holder = e.getInventory().getHolder();
@@ -50,7 +50,7 @@ public abstract class Menu implements InventoryHolder {
      * we have information on who's menu this is and what
      * info is to be transfered.
      */
-    public Menu(@Nonnull Player player) { this.player = player; }
+    public Menu(@NonNull Player player) { this.player = player; }
 
     /**
      *  let each menu decide their name
