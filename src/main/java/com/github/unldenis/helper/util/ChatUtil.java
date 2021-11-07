@@ -1,8 +1,7 @@
 package com.github.unldenis.helper.util;
 
+import lombok.NonNull;
 import org.bukkit.ChatColor;
-
-import javax.annotation.Nonnull;
 
 public class ChatUtil {
 
@@ -11,7 +10,7 @@ public class ChatUtil {
      * @param text original message
      * @return converted message
      */
-    public static String color(@Nonnull String text) {
+    public static String color(@NonNull String text) {
         return ChatColor.translateAlternateColorCodes('&', text);
     }
 

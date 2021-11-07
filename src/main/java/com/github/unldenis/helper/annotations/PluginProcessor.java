@@ -11,7 +11,7 @@ import javax.tools.Diagnostic;
 import java.util.Set;
 
 @SupportedAnnotationTypes("com.github.unldenis.helper.annotations.Plugin")
-@SupportedSourceVersion(SourceVersion.RELEASE_15)
+@SupportedSourceVersion(SourceVersion.RELEASE_8)
 public class PluginProcessor extends AbstractProcessor {
     @Override
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {

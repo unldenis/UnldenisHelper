@@ -1,6 +1,7 @@
 package com.github.unldenis.helper;
 
-import javax.annotation.Nonnull;
+
+import lombok.NonNull;
 
 public class Commands {
 
@@ -9,5 +10,5 @@ public class Commands {
      * @param command name of the command
      * @return CCommand type object
      */
-    public static CCommand create(@Nonnull String command) { return new CCommand(command); }
+    public static CCommand create(@NonNull String command) { return new CCommand(command); }
 }
