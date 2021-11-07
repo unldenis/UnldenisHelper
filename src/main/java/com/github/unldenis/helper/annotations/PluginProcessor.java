@@ -1,5 +1,7 @@
 package com.github.unldenis.helper.annotations;
 
+import com.google.auto.service.AutoService;
+
 import javax.annotation.processing.*;
 import javax.lang.model.SourceVersion;
 import javax.lang.model.element.Element;
@@ -13,7 +15,7 @@ import java.util.Arrays;
 import java.util.Set;
 
 @SupportedAnnotationTypes("com.github.unldenis.helper.annotations.Plugin")
-@SupportedSourceVersion(SourceVersion.RELEASE_8)
+@AutoService(Plugin.class)
 public class PluginProcessor extends AbstractProcessor {
     Messager messager;
 
@@ -62,5 +64,10 @@ public class PluginProcessor extends AbstractProcessor {
 
         }
         return true;
+    }
+
+    @Override
+    public SourceVersion getSupportedSourceVersion() {
+        return SourceVersion.latestSupported();
     }
 }
