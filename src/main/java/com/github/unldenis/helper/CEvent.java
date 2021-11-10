@@ -12,11 +12,13 @@ import java.util.function.Predicate;
 public final class CEvent<T extends Event> implements Listener {
 
     private Class clazz;
+    private String eventName;
     private Consumer consumer;
     private HashSet<Predicate> predicates = new HashSet<>();
 
     public <T extends Event> CEvent(@NonNull Class<T> clazz) {
         this.clazz = clazz;
+        eventName = clazz.getSimpleName();
     }
 
     /**
@@ -54,7 +56,7 @@ public final class CEvent<T extends Event> implements Listener {
      */
     public void bindWith(@NonNull JavaPlugin plugin, @NonNull EventPriority eventPriority) {
         Bukkit.getServer().getPluginManager().registerEvent(clazz, this, eventPriority, (listener, event) -> {
-            if(event.getEventName().equals(clazz.getSimpleName())) {  //EntityDeathEvent conflict with PlayerDeathEvent fix
+            if(event.getEventName().equals(eventName)) {  //EntityDeathEvent conflict with PlayerDeathEvent fix
                 boolean v = true;
                 for(Predicate predicate: predicates) {
                     if (!predicate.test((T) event)) {
