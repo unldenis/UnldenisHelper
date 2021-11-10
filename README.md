@@ -22,7 +22,6 @@ Add the dependency:
     <version>master-SNAPSHOT</version>
 </dependency>
 ```
-<br><br>
 ##Events
 <br>
 Classic use of the Spigotmc-api: 
