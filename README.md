@@ -41,7 +41,6 @@ Commands.create("hi").handler(((sender, args) -> {
     }
 })).bindWith(plugin);
 ```
-<br>
 ## How to install
 ### Maven
 Add the JitPack repository to your build file:
