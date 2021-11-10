@@ -1,6 +1,27 @@
 # UnldenisHelper
 
 Library that increases productivity in the production of spigot plugins.
+## How to install
+### Maven
+Add the JitPack repository to your build file:
+<br>
+```xml
+<repositories>
+  <repository>
+    <id>jitpack.io</id>
+    <url>https://jitpack.io</url>
+  </repository>
+</repositories>
+```
+Add the dependency:
+<br>
+```xml
+<dependency>
+    <groupId>com.github.unldenis</groupId>
+    <artifactId>UnldenisHelper</artifactId>
+    <version>master-SNAPSHOT</version>
+</dependency>
+```
 <br><br>
 <b>Events</b>
 <br>
@@ -40,25 +61,4 @@ Commands.create("hi").handler(((sender, args) -> {
         player.sendMessage("Hi " + player.getName());
     }
 })).bindWith(plugin);
-```
-## How to install
-### Maven
-Add the JitPack repository to your build file:
-<br>
-```xml
-<repositories>
-  <repository>
-    <id>jitpack.io</id>
-    <url>https://jitpack.io</url>
-  </repository>
-</repositories>
-```
-Add the dependency:
-<br>
-```xml
-<dependency>
-    <groupId>com.github.unldenis</groupId>
-    <artifactId>UnldenisHelper</artifactId>
-    <version>master-SNAPSHOT</version>
-</dependency>
 ```
