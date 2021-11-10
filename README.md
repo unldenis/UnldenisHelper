@@ -22,7 +22,8 @@ Add the dependency:
     <version>master-SNAPSHOT</version>
 </dependency>
 ```
-##Events
+<br>
+## Events
 <br>
 Classic use of the Spigotmc-api: 
 ```java
@@ -52,7 +53,7 @@ Events.subscribe(PlayerMoveEvent.class)
 }).bindWith(plugin);
 ```
 <br><br>
-##Commands
+## Commands
 <br>
 ```java
 Commands.create("hi").handler(((sender, args) -> {
