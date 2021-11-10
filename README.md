@@ -22,9 +22,7 @@ Add the dependency:
     <version>master-SNAPSHOT</version>
 </dependency>
 ```
-<br>
 ## Events
-<br>
 Classic use of the Spigotmc-api: 
 ```java
 //imports
@@ -52,9 +50,7 @@ Events.subscribe(PlayerMoveEvent.class)
     event.getPlayer().sendMessage("You moved an entire block");
 }).bindWith(plugin);
 ```
-<br><br>
 ## Commands
-<br>
 ```java
 Commands.create("hi").handler(((sender, args) -> {
     if(sender instanceof Player player && player.hasPermission("plugin.admin")) {
