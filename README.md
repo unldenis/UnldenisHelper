@@ -63,12 +63,11 @@ To handle asynchronous events the Bukkit API provides nothing less than a runnab
 <a href="https://github.com/unldenis/UnldenisHelper/blob/master/src/main/java/com/github/unldenis/helper/concurrent/BukkitFuture.java">BukkitFuture</a> allows you to return a new CompletableFuture that is asynchronously completed by Bukkit schedule, which <a href="https://github.com/unldenis/UnldenisHelper/blob/74b861606b4eb09cbfdc98300ba7565c094c4c33/src/main/java/com/github/unldenis/helper/concurrent/BukkitFuture.java#L19">allows</a> you or <a href="https://github.com/unldenis/UnldenisHelper/blob/74b861606b4eb09cbfdc98300ba7565c094c4c33/src/main/java/com/github/unldenis/helper/concurrent/BukkitFuture.java#L37">not</a> to return a value at the end of a task. <br>
 Moreover, thanks to <a href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletableFuture.html">CompletableFuture</a> you will be able to execute more tasks sequentially.
 ```java
-findPlayer(plugin)
-.thenCompose(player -> getPlayTime(plugin, player))
+findPlayer(this)
+.thenCompose(user -> getPlayTime(this, user))
 .thenAccept(userPlaytime -> {
     // perform actions with response
-    System.out.println("This player has " + userPlaytime + " hours played");
-})
+    System.out.println("This player has " + userPlaytime + " hours played"); })
 .exceptionally(throwable -> {
     // something has terribly gone wrong!
     // handle exception
