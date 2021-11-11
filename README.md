@@ -64,13 +64,14 @@ To handle asynchronous events the Bukkit API provides nothing less than a runnab
 Moreover, thanks to <a href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletableFuture.html">CompletableFuture</a> you will be able to execute more tasks sequentially.
 ```java
 findPlayer(this)
-.thenCompose(user -> getPlayTime(this, user))
-.thenAccept(userPlaytime -> {
+.thenCompose(player -> getPlayTime(this, player))
+.thenAccept(pPlaytime -> {
     // perform actions with response
-    System.out.println("This player has " + userPlaytime + " hours played"); })
+    System.out.println("This player has " + pPlaytime + " hours played"); })
 .exceptionally(throwable -> {
     // something has terribly gone wrong!
     // handle exception
+    System.err.println(throwable.getMessage());
     return null;
 });
 
@@ -82,6 +83,7 @@ public CompletableFuture<String> findPlayer(JavaPlugin plugin) {
 }
 public CompletableFuture<Integer> getPlayTime(JavaPlugin plugin, String player) {
     return BukkitFuture.supplyAsync(plugin, ()-> {
+        if(player==null || player.isEmpty()) throw new IllegalArgumentException("Player is invalid");
         // load stat from database
         return 1;
     });
