@@ -4,24 +4,28 @@ import lombok.NonNull;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.util.concurrent.Callable;
 import java.util.concurrent.CompletableFuture;
-import java.util.function.Supplier;
 
 public class BukkitFuture {
 
     /**
      * Returns a new CompletableFuture that is asynchronously completed by Bukkit schedule with the value obtained by calling the given Supplier.
      * @param plugin the reference to the plugin scheduling task
-     * @param supplier a function returning the value to be used to complete the returned CompletableFuture
+     * @param callable a function returning the value to be used to complete the returned CompletableFuture
      * @param <T> the function's return type
      * @return
      */
-    public static <T> CompletableFuture<T> supplyAsync(@NonNull JavaPlugin plugin, @NonNull Supplier<T> supplier) {
+    public static <T> CompletableFuture<T> supplyAsync(@NonNull JavaPlugin plugin, @NonNull Callable<T> callable) {
         CompletableFuture<T> future = new CompletableFuture<>();
         new BukkitRunnable() {
             @Override
             public void run() {
-                future.complete(supplier.get());
+                try {
+                    future.complete(callable.call());
+                } catch (Exception e) {
+                    future.completeExceptionally(e);
+                }
             }
         }
         .runTaskAsynchronously(plugin);
@@ -39,8 +43,12 @@ public class BukkitFuture {
         new BukkitRunnable() {
             @Override
             public void run() {
-                runnable.run();
-                future.complete(null);
+                try {
+                    runnable.run();
+                    future.complete(null);
+                }catch (Exception e) {
+                    future.completeExceptionally(e);
+                }
             }
         }
         .runTaskAsynchronously(plugin);
