@@ -40,7 +40,6 @@ public class PlayerListeners implements Listener {
 */
 getServer().getPluginManager().registerEvents(new PlayerListeners(), this);
 ```
-<br><br>
 Using my library, these few lines of code will suffice for you to insert into any method!
 ```java
 Events.subscribe(PlayerMoveEvent.class)
