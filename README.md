@@ -72,7 +72,8 @@ findPlayer(this)
     // handle exception
     return null;
 });
-
+```
+```java
 public CompletableFuture<String> findPlayer(JavaPlugin plugin) {
     return BukkitFuture.supplyAsync(plugin, ()-> {
         // load name from database
