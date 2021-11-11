@@ -2,7 +2,6 @@ package com.github.unldenis.helper;
 
 import lombok.NonNull;
 import org.bukkit.event.Event;
-import java.util.Arrays;
 
 public class Events {
 
