@@ -65,12 +65,11 @@ CompletableFuture<String> playerToFind = BukkitFuture.supplyAsync(plugin, ()-> {
     return "unldenis";
 });
 
-playerToFind.whenComplete(((name, throwable) -> {
-    if(throwable!=null) {
-        // handle exception
-    }else {
-        // result ready to use
-        System.out.println("Hi " + name);
-    }
-}));
+playerToFind.thenAccept(name -> {
+    // perform actions with response
+}).exceptionally(throwable -> {
+    // something has terribly gone wrong!
+    // handle exception
+    return null;
+});
 ```
