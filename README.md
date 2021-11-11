@@ -66,7 +66,7 @@ public CompletableFuture<String> findPlayer(JavaPlugin plugin) {
         return "unldenis";
     });
 }
-public CompletableFuture<Integer> getPlayTime(JavaPlugin plugin, String user) {
+public CompletableFuture<Integer> getPlayTime(JavaPlugin plugin, String player) {
     return BukkitFuture.supplyAsync(this, ()-> {
         // load stat from database
         return 1;
@@ -74,7 +74,7 @@ public CompletableFuture<Integer> getPlayTime(JavaPlugin plugin, String user) {
 }
 
 findPlayer(plugin)
-.thenApply(user -> getPlayTime(plugin, user))
+.thenApply(player -> getPlayTime(plugin, player))
 .thenAccept(userPlaytime -> {
     // perform actions with response
     System.out.println("This player has " + userPlaytime + " hours played");
