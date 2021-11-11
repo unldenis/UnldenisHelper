@@ -73,8 +73,8 @@ public CompletableFuture<Integer> getPlayTime(JavaPlugin plugin, String user) {
     });
 }
 
-findPlayer(this)
-.thenApply(user -> getPlayTime(this, user))
+findPlayer(plugin)
+.thenApply(user -> getPlayTime(plugin, user))
 .thenAccept(userPlaytime -> {
     // perform actions with response
     System.out.println("This player has " + userPlaytime + " hours played");
