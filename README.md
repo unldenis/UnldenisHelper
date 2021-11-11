@@ -60,12 +60,14 @@ Commands.create("hi").handler(((sender, args) -> {
 ```
 ## Asynchronous API
 ```java
-CompletableFuture<String> playerToFind = BukkitFuture.supplyAsync(plugin, ()-> {
-    // load name from database
-    return "unldenis";
-});
+public CompletableFuture<String> findPlayer() {
+    return BukkitFuture.supplyAsync(this, ()-> {
+        // load name from database
+        return "unldenis";
+    });
+} 
 
-playerToFind.thenAccept(name -> {
+findPlayer().thenAccept(name -> {
     // perform actions with response
 }).exceptionally(throwable -> {
     // something has terribly gone wrong!
