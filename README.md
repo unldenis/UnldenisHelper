@@ -79,6 +79,7 @@ public CompletableFuture<Integer> getPlayTime(JavaPlugin plugin, String player) 
 }
 ```
 ## Commands
+Creating commands also allows you to avoid boilerplate code.
 ```java
 Commands.create("hi").handler(((sender, args) -> {
     if(sender instanceof Player player && player.hasPermission("plugin.admin")) {
