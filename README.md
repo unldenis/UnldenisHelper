@@ -61,8 +61,8 @@ Commands.create("hi").handler(((sender, args) -> {
 ## Asynchronous API
 To handle asynchronous events the Bukkit API provides nothing less than a runnable to execute tasks asynchronously. <a href="https://github.com/unldenis/UnldenisHelper/blob/master/src/main/java/com/github/unldenis/helper/concurrent/BukkitFuture.java">BukkitFuture</a> allows you to return a new CompletableFuture that is asynchronously completed by Bukkit schedule, which <a href="https://github.com/unldenis/UnldenisHelper/blob/74b861606b4eb09cbfdc98300ba7565c094c4c33/src/main/java/com/github/unldenis/helper/concurrent/BukkitFuture.java#L19">allows</a> you to return a value at the end of a task. Moreover, thanks to <a href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletableFuture.html">CompletableFuture</a> you will be able to execute more tasks sequentially.
 ```java
-findPlayer(this)
-.thenCompose(player -> getPlayTime(this, player))
+findPlayer(plugin)
+.thenCompose(player -> getPlayTime(plugin, player))
 .thenAccept(pPlaytime -> {
     // perform actions with response
 .exceptionally(throwable -> {
