@@ -60,7 +60,7 @@ Commands.create("hi").handler(((sender, args) -> {
 ```
 ## Asynchronous API
 ```java
-CompletableFuture<String> playerToFind = BukkitFuture.supplyAsync(this, ()-> {
+CompletableFuture<String> playerToFind = BukkitFuture.supplyAsync(plugin, ()-> {
     // load name from database
     return "unldenis";
 });
