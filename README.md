@@ -60,16 +60,26 @@ Commands.create("hi").handler(((sender, args) -> {
 ```
 ## Asynchronous API
 ```java
-public CompletableFuture<String> findPlayer() {
-    return BukkitFuture.supplyAsync(this, ()-> {
+public CompletableFuture<String> findPlayer(JavaPlugin plugin) {
+    return BukkitFuture.supplyAsync(plugin, ()-> {
         // load name from database
         return "unldenis";
     });
-} 
+}
+public CompletableFuture<Integer> getPlayTime(JavaPlugin plugin, String user) {
+    return BukkitFuture.supplyAsync(this, ()-> {
+        // load stat from database
+        return 1;
+    });
+}
 
-findPlayer().thenAccept(name -> {
+findPlayer(this)
+.thenApply(user -> getPlayTime(this, user))
+.thenAccept(userPlaytime -> {
     // perform actions with response
-}).exceptionally(throwable -> {
+    System.out.println("This player has " + userPlaytime + " hours played");
+})
+.exceptionally(throwable -> {
     // something has terribly gone wrong!
     // handle exception
     return null;
