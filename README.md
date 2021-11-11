@@ -58,3 +58,19 @@ Commands.create("hi").handler(((sender, args) -> {
     }
 })).bindWith(plugin);
 ```
+## Asynchronous API
+```java
+CompletableFuture<String> playerToFind = BukkitFuture.supplyAsync(this, ()-> {
+    // load name from database
+    return "unldenis";
+});
+
+playerToFind.whenComplete(((name, throwable) -> {
+    if(throwable!=null) {
+        // handle exception
+    }else {
+        // result ready to use
+        System.out.println("Hi " + name);
+    }
+}));
+```
