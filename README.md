@@ -67,11 +67,9 @@ findPlayer(this)
 .thenCompose(player -> getPlayTime(this, player))
 .thenAccept(pPlaytime -> {
     // perform actions with response
-    System.out.println("This player has " + pPlaytime + " hours played"); })
 .exceptionally(throwable -> {
     // something has terribly gone wrong!
     // handle exception
-    System.err.println(throwable.getMessage());
     return null;
 });
 
