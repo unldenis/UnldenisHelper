@@ -60,7 +60,7 @@ Commands.create("hi").handler(((sender, args) -> {
 ```
 ## Asynchronous API
 To handle asynchronous events the Bukkit API provides nothing less than a runnable to execute tasks asynchronously. <br>
-Thanks to BukkitFuture you will be able to get a CompletableFuture <Your class> that you need. <br> 
+Thanks to <a href="https://github.com/unldenis/UnldenisHelper/blob/master/src/main/java/com/github/unldenis/helper/concurrent/BukkitFuture.java">BukkitFuture</a> you will be able to get a CompletableFuture <Your class> that you need. <br> 
 Moreover, thanks to <a href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletableFuture.html">CompletableFuture</a> you will be able to execute more tasks sequentially.
 ```java
 public CompletableFuture<String> findPlayer(JavaPlugin plugin) {
