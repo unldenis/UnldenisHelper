@@ -59,8 +59,8 @@ Commands.create("hi").handler(((sender, args) -> {
 })).bindWith(plugin);
 ```
 ## Asynchronous API
-To handle asynchronous events the Bukkit API provides nothing less than a runnable to run asynchronously. <br>
-Thanks to BukkitFuture you will be able to get a CompletableFuture <Your class> that you need. <br>
+To handle asynchronous events the Bukkit API provides nothing less than a runnable to execute tasks asynchronously. <br>
+Thanks to BukkitFuture you will be able to get a CompletableFuture <Your class> that you need. <br> 
 Moreover, thanks to CompletableFuture you will be able to execute more tasks sequentially.
 ```java
 public CompletableFuture<String> findPlayer(JavaPlugin plugin) {
