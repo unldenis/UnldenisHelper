@@ -70,7 +70,7 @@ public CompletableFuture<String> findPlayer(JavaPlugin plugin) {
     });
 }
 public CompletableFuture<Integer> getPlayTime(JavaPlugin plugin, String player) {
-    return BukkitFuture.supplyAsync(this, ()-> {
+    return BukkitFuture.supplyAsync(plugin, ()-> {
         // load stat from database
         return 1;
     });
