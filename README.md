@@ -52,28 +52,31 @@ Events.subscribe(PlayerMoveEvent.class)
 ## Asynchronous API
 To handle asynchronous events the Bukkit API provides nothing less than a runnable to execute tasks asynchronously. <a href="https://github.com/unldenis/UnldenisHelper/blob/master/src/main/java/com/github/unldenis/helper/concurrent/BukkitFuture.java">BukkitFuture</a> allows you to return a new CompletableFuture that is asynchronously completed by Bukkit schedule, which <a href="https://github.com/unldenis/UnldenisHelper/blob/74b861606b4eb09cbfdc98300ba7565c094c4c33/src/main/java/com/github/unldenis/helper/concurrent/BukkitFuture.java#L19">allows</a> you to return a value at the end of a task. Moreover, thanks to <a href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletableFuture.html">CompletableFuture</a> you will be able to execute more tasks sequentially.
 ```java
-findPlayer(plugin)
-.thenCompose(player -> getPlayTime(plugin, player))
-.thenAccept(pPlaytime -> {
-    // perform actions with response
-.exceptionally(throwable -> {
-    // something has terribly gone wrong!
-    // handle exception
-    return null;
-});
+BukkitFuture.bindWith(plugin);
+
+findPlayer()
+.thenCompose(playerName -> getPlayTime(playerName))
+.whenComplete(sync((playtime, t) -> {
+    if(t!=null) {
+        // handle possible errors
+        Bukkit.broadcastMessage(t.getMessage());
+        return;
+    }
+    Bukkit.broadcastMessage("Playtime sync is " + playtime);
+}));
 ```
 ```java
-public CompletableFuture<String> findPlayer(JavaPlugin plugin) {
-    return BukkitFuture.supplyAsync(plugin, ()-> {
+public CompletableFuture<String> findPlayer() {
+    return BukkitFuture.supplyAsync(()-> {
         // load name from database
         return "unldenis";
     });
 }
-public CompletableFuture<Integer> getPlayTime(JavaPlugin plugin, String player) {
-    return BukkitFuture.supplyAsync(plugin, ()-> {
+public CompletableFuture<Integer> getPlayTime(String player) {
+    return BukkitFuture.supplyAsync(()-> {
         if(player==null || player.isEmpty()) throw new IllegalArgumentException("Player is invalid");
         // load stat from database
-        return 1;
+        return 0;
     });
 }
 ```
