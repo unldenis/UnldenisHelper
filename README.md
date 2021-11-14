@@ -3,7 +3,7 @@
 Library that increases productivity in the production of spigot plugins.
 ## Table of contents
 - Install
-- <a href="events">Events</a>
+- <a href="#events">Events</a>
 - Concurrent API
 - Commands
 ## How to install
