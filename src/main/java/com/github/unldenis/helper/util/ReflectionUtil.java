@@ -25,4 +25,13 @@ public class ReflectionUtil {
         Constructor<?> constructor = ConstructorUtils.getMatchingAccessibleConstructor(input, new Class[]{parameter.getClass()});
         return (T) constructor.newInstance(parameter);
     }
+
+    public static void setValue(@NonNull Object object, @NonNull Field field, @NonNull Object newValue) throws IllegalAccessException {
+        boolean acc = field.isAccessible();
+        if(!acc)
+            field.setAccessible(true);
+        field.set(object, newValue);
+        if(!acc)
+            field.setAccessible(false);
+    }
 }
