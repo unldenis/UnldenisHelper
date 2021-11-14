@@ -5,7 +5,7 @@ Library that increases productivity in the production of spigot plugins.
 - <a href="#install">Install</a>
 - <a href="#events">Events</a>
 - <a href="#concurrent-api">Concurrent API</a>
-- <a href="#commands">Commands<a</>
+- <a href="#commands">Commands</a>
 <a id="id="install">
 ## How to install
 ### Maven
