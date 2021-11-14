@@ -2,8 +2,8 @@
 
 Library that increases productivity in the production of spigot plugins.
 ## Table of contents
-- <a href="Install
-- Events
+- Install
+- <a href="events">Events</a>
 - Concurrent API
 - Commands
 ## How to install
@@ -27,7 +27,8 @@ Add the dependency:
     <version>master-SNAPSHOT</version>
 </dependency>
 ```
-## <a id="id="id">Events</a>
+<a id="id="events">
+## Events
 Classic use of the Spigotmc-api: 
 ```java
 //imports
