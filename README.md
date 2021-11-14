@@ -28,7 +28,7 @@ Add the dependency:
     <version>master-SNAPSHOT</version>
 </dependency>
 ```
-<a id="id="events">
+<a id="events">
 ## Events
 Classic use of the Spigotmc-api: 
 ```java
