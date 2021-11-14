@@ -6,7 +6,7 @@ Library that increases productivity in the production of spigot plugins.
 - <a href="#events">Events</a>
 - <a href="#concurrent-api">Concurrent API</a>
 - <a href="#commands">Commands</a>
-<a id="install">
+<a id="install"></a>
 ## How to install
 ### Maven
 Add the JitPack repository to your build file:
@@ -28,7 +28,7 @@ Add the dependency:
     <version>master-SNAPSHOT</version>
 </dependency>
 ```
-<a id="events">
+<a id="events"></a>
 ## Events
 Classic use of the Spigotmc-api: 
 ```java
@@ -56,7 +56,7 @@ Events.subscribe(PlayerMoveEvent.class)
     event.getPlayer().sendMessage("You moved an entire block");
 }).bindWith(plugin);
 ```
-<a id="concurrent-api">
+<a id="concurrent-api"></a>
 ## Concurrent API
 To handle async and sync events the Bukkit API provides nothing less than a runnable. <a href="https://github.com/unldenis/UnldenisHelper/blob/master/src/main/java/com/github/unldenis/helper/concurrent/BukkitFuture.java">BukkitFuture</a> allows you to return a new CompletableFuture that is completed by Bukkit schedule, which will return a value at the end of a task. Moreover, thanks to <a href="https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/CompletableFuture.html">CompletableFuture</a> you will be able to execute more tasks sequentially.<br>
 The method <a href="https://github.com/unldenis/UnldenisHelper/blob/01e1857f9009ac83fb6c28267ffee133920798b8/src/main/java/com/github/unldenis/helper/concurrent/BukkitFuture.java#L112">sync</a> it is used to execute the biconsumer of the whenComplete synchronously so to be able to use the bukkit API.
@@ -90,7 +90,7 @@ public CompletableFuture<Integer> getPlayTime(String player) {
     });
 }
 ```
-<a id="commands">
+<a id="commands"></a>
 ## Commands
 Creating commands also allows you to avoid boilerplate code.
 ```java
