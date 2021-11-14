@@ -6,6 +6,7 @@ Library that increases productivity in the production of spigot plugins.
 - <a href="#events">Events</a>
 - <a href="#concurrent-api">Concurrent API</a>
 - <a href="#commands">Commands</a>
+- <a href="https://www.spigotmc.org/threads/fast-nms-craftbukkit-reflection-api.533803/#post-4300891">Fast NMS & CraftBukkit Reflection Api</a>
 <a id="install"></a>
 ## How to install
 ### Maven
