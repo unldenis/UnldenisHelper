@@ -1,6 +1,11 @@
 # UnldenisHelper
 
 Library that increases productivity in the production of spigot plugins.
+## Table of contents
+- Install
+- Events
+- Concurrent API
+- Commands
 ## How to install
 ### Maven
 Add the JitPack repository to your build file:
