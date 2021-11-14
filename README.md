@@ -28,7 +28,7 @@ Classic use of the Spigotmc-api:
 //imports
 public class PlayerListeners implements Listener {
     @EventHandler
-    public void onQuit(PlayerMoveEvent event) {
+    public void onMove(PlayerMoveEvent event) {
         if(!e.getPlayer().hasPermission("plugin.admin")) return;
         if(e.getFrom().getX() != e.getTo().getX() || e.getFrom().getZ() != e.getTo().getZ()) return;
         event.getPlayer().sendMessage("You moved an entire block");
