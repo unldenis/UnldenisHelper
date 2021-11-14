@@ -6,7 +6,7 @@ Library that increases productivity in the production of spigot plugins.
 - <a href="#events">Events</a>
 - <a href="#concurrent-api">Concurrent API</a>
 - <a href="#commands">Commands</a>
-<a id="id="install">
+<a id="install">
 ## How to install
 ### Maven
 Add the JitPack repository to your build file:
