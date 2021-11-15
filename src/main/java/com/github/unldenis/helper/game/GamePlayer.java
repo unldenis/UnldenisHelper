@@ -1,5 +1,6 @@
 package com.github.unldenis.helper.game;
 
+import com.github.unldenis.helper.util.ChatUtil;
 import lombok.NonNull;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
@@ -16,7 +17,6 @@ public class GamePlayer {
     public GamePlayer(@NonNull Player player) {
         this.p = player;
         backupInventory = player.getInventory();
-
     }
 
     /**
@@ -27,17 +27,16 @@ public class GamePlayer {
         p.getInventory().setArmorContents(backupInventory.getArmorContents());
     }
 
-
     public void sendMessage(@NonNull String m) {
-        p.sendMessage(ChatColor.translateAlternateColorCodes('&', m));
+        p.sendMessage(ChatUtil.color(m));
     }
 
     public void sendTitle(@NonNull String title, String subTitle) {
-        p.sendTitle(ChatColor.translateAlternateColorCodes('&', title), ChatColor.translateAlternateColorCodes('&', subTitle), 1, 20, 1);
+        p.sendTitle(ChatUtil.color(title), ChatUtil.color(subTitle), 1, 20, 1);
     }
 
     public void sendActionBar(@NonNull String message) {
-        p.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(ChatColor.translateAlternateColorCodes('&', message)));
+        p.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(ChatUtil.color(message)));
     }
 
     public void playSound(@NonNull Sound sound) {
