@@ -8,17 +8,18 @@ import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
+
 public class GamePlayer {
 
     protected final Player p;
-    private final ItemStack[] contents;
-    private final ItemStack[] armorContents;
+    protected final ItemStack[] contents;
+    protected final ItemStack[] armorContents;
 
 
     public GamePlayer(@NonNull Player player) {
         this.p = player;
-        contents = player.getInventory().getContents().clone();
-        armorContents = player.getInventory().getArmorContents().clone();
+        contents = p.getInventory().getContents().clone();
+        armorContents = p.getInventory().getArmorContents().clone();
     }
 
     /**
