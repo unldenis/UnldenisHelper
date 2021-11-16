@@ -7,24 +7,26 @@ import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.*;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.PlayerInventory;
 
 public class GamePlayer {
 
     protected final Player p;
-    private PlayerInventory backupInventory;
+    private final ItemStack[] contents;
+    private final ItemStack[] armorContents;
+
 
     public GamePlayer(@NonNull Player player) {
         this.p = player;
-        backupInventory = player.getInventory();
+        contents = player.getInventory().getContents().clone();
+        armorContents = player.getInventory().getArmorContents().clone();
     }
 
     /**
      * Method that rollback gameplayer inventory
      */
     public void rollback() {
-        p.getInventory().setContents(backupInventory.getContents());
-        p.getInventory().setArmorContents(backupInventory.getArmorContents());
+        p.getInventory().setContents(contents);
+        p.getInventory().setArmorContents(armorContents);
     }
 
     public void sendMessage(@NonNull String m) {
