@@ -1,7 +1,9 @@
 package com.github.unldenis.helper;
 import lombok.NonNull;
 import org.bukkit.Bukkit;
-import org.bukkit.event.*;
+import org.bukkit.event.Event;
+import org.bukkit.event.EventPriority;
+import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.HashSet;

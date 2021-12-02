@@ -3,6 +3,7 @@ package com.github.unldenis.helper.concurrent;
 import lombok.NonNull;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.Plugin;
+
 import java.util.concurrent.CompletableFuture;
 import java.util.function.BiConsumer;
 import java.util.function.Supplier;
