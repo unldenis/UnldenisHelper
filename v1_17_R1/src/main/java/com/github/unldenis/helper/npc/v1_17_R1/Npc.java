@@ -46,6 +46,9 @@ public class Npc extends NPC {
         //show hologram
         lines.show();
 
+        //add packets to all players
+        addNPCPacket();
+
     }
 
 
