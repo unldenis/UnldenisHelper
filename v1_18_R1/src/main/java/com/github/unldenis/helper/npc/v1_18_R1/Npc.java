@@ -34,7 +34,7 @@ public class Npc extends NPC {
     }
 
     @Override
-    public void spawn() {
+    protected void spawn() {
         MinecraftServer nmsServer = ((CraftServer) Bukkit.getServer()).getServer();
         WorldServer nmsWorld = ((CraftWorld) location.getWorld()).getHandle(); // Change "world" to the world the NPC should be spawned in.
         GameProfile gameProfile = new GameProfile(UUID.randomUUID(), ""); // Change "playername" to the name the NPC should have, max 16 characters.

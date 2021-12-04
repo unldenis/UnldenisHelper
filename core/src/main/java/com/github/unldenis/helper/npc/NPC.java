@@ -96,7 +96,7 @@ public abstract class NPC {
         return null;
     }
 
-    public abstract void spawn();
+    protected abstract void spawn();
 
     public abstract void addNPCPacket(@NonNull Player player);
 
@@ -145,6 +145,7 @@ public abstract class NPC {
                 Class<?> clazz = Class.forName("com.github.unldenis.helper.npc."+PacketReader.Builder.VERSION+".Npc");
                 NPC npc =  (NPC) clazz.getConstructor(PacketReader.class, Location.class, String.class, ArrayList.class).newInstance(packetReader, location, skin, lines);
                 packetReader.addNPC(npc);
+                npc.spawn();
                 return npc;
             } catch (InstantiationException | NoSuchMethodException | InvocationTargetException | IllegalAccessException | ClassNotFoundException e) {
                 throw new IllegalStateException(e);
