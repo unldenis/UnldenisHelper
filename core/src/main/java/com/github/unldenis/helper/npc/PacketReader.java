@@ -1,41 +1,56 @@
 package com.github.unldenis.helper.npc;
 
+import lombok.Getter;
 import lombok.NonNull;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashSet;
 import java.util.Set;
 
 public abstract class PacketReader {
 
-    public static String PACKET_INJECTOR_NAME = "PacketInjector";
+    public static String PACKET_INJECTOR_NAME = "PacketInjectorHelper";
 
-
-
-    protected final JavaPlugin plugin;
+    @Getter protected final JavaPlugin plugin;
     protected Set<NPC> npcs = new HashSet<>();
 
     public PacketReader(@NonNull JavaPlugin plugin) {
         this.plugin = plugin;
     }
 
-
     public void addNPC(@NonNull NPC npc) {
-        npcs.add(npc);
+        this.npcs.add(npc);
     }
 
     public void removeNPC(@NonNull NPC npc) {
-        npcs.remove(npc);
+        this.npcs.remove(npc);
+    }
+
+    public Object getValue(Object instance, String name) {
+        Object result = null;
+        try {
+            Field field = instance.getClass().getDeclaredField(name);
+            field.setAccessible(true);
+            result = field.get(instance);
+            field.setAccessible(false);
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
     }
 
     public abstract void inject(@NonNull Player player);
 
     public abstract void uninject(@NonNull Player player);
 
-
+    @NonNull
+    public static Builder builder() {
+        return new Builder();
+    }
 
     public static class Builder {
 

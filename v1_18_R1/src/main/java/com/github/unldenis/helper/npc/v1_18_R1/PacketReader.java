@@ -1,5 +1,4 @@
-package com.github.unldenis.helper.npc.v1_17_R1;
-
+package com.github.unldenis.helper.npc.v1_18_R1;
 import com.github.unldenis.helper.Events;
 import com.github.unldenis.helper.npc.event.RightClickNPCEvent;
 import io.netty.channel.Channel;
@@ -9,7 +8,7 @@ import lombok.NonNull;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.PacketPlayInUseEntity;
 import org.bukkit.Bukkit;
-import org.bukkit.craftbukkit.v1_17_R1.entity.CraftPlayer;
+import org.bukkit.craftbukkit.v1_18_R1.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
@@ -31,7 +30,7 @@ public class PacketReader extends com.github.unldenis.helper.npc.PacketReader {
             uninject(e.getPlayer());
             npcs.forEach(npc -> npc.removeNPCPacket(e.getPlayer()));
         }).bindWith(plugin);
-        Events.subscribe(PlayerJoinEvent.class).handler(e-> {
+        Events.subscribe(PlayerJoinEvent.class).handler(e->{
             inject(e.getPlayer());
             npcs.forEach(npc -> npc.addNPCPacket(e.getPlayer()));
         }).bindWith(plugin);
@@ -45,7 +44,6 @@ public class PacketReader extends com.github.unldenis.helper.npc.PacketReader {
 
         if(channel.pipeline().get(PacketReader.PACKET_INJECTOR_NAME)!=null)
             return;
-
         channel.pipeline().addAfter("decoder", PacketReader.PACKET_INJECTOR_NAME, new MessageToMessageDecoder<PacketPlayInUseEntity>() {
             @Override
             protected void decode(ChannelHandlerContext channel, PacketPlayInUseEntity packet, List<Object> arg) {
@@ -86,17 +84,17 @@ public class PacketReader extends com.github.unldenis.helper.npc.PacketReader {
             int id = (int) getValue(packet, "a");
             if(actionName.equals("ATTACK")) {
                 npcs
-                    .stream()
-                    .filter(npc -> npc.getId()==id)
-                    .findFirst()
-                    .ifPresent(npc -> {
-                        new BukkitRunnable(){
-                            @Override
-                            public void run() {
-                                Bukkit.getPluginManager().callEvent(new RightClickNPCEvent(player, npc));
-                            }
-                        }.runTask(plugin);
-                    });
+                        .stream()
+                        .filter(npc -> npc.getId()==id)
+                        .findFirst()
+                        .ifPresent(npc -> {
+                            new BukkitRunnable(){
+                                @Override
+                                public void run() {
+                                    Bukkit.getPluginManager().callEvent(new RightClickNPCEvent(player, npc));
+                                }
+                            }.runTask(plugin);
+                        });
             }
         }
     }

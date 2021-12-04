@@ -30,6 +30,7 @@ public class NPCHolo {
         headerStand.setCustomName(lines.get(j));
         headerStand.setCustomNameVisible(true);
         headerStand.setGravity(false);
+        headerStand.setCanPickupItems(false);
         headerStand.setVisible(false);
         this.holoEntities.add(headerStand);
       }
