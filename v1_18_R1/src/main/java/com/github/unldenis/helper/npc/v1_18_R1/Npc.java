@@ -47,6 +47,9 @@ public class Npc extends NPC {
         //show hologram
         lines.show();
 
+        //add npc packets to all players
+        addNPCPacket();
+
     }
 
     @Override
@@ -84,7 +87,6 @@ public class Npc extends NPC {
             }
         }
         .runTaskLater(packetReader.getPlugin(), 15L);
-
     }
 
 
@@ -92,7 +94,7 @@ public class Npc extends NPC {
      * Override for better performance
      */
     @Override
-    public void addNPCPacket() {
+    protected void addNPCPacket() {
 
         for(Player player: Bukkit.getOnlinePlayers()) {
             sendPacket(player, new PacketPlayOutPlayerInfo(PacketPlayOutPlayerInfo.EnumPlayerInfoAction.a, npc)); // "Adds the player data for the client to use when spawning a player" - https://wiki.vg/Protocol#Spawn_Player

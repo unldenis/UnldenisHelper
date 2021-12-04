@@ -61,7 +61,7 @@ public abstract class NPC {
         removeNPCPacket();
     }
 
-    public void addNPCPacket() {
+    protected void addNPCPacket() {
         Bukkit.getOnlinePlayers().forEach(this::addNPCPacket);
     }
 
@@ -139,10 +139,8 @@ public abstract class NPC {
 
         @NonNull
         public NPC build(@NonNull PacketReader packetReader) {
-            if(location == null || lines.isEmpty())
-                throw new IllegalArgumentException("Location or at least one line is missing");
-            if(skin==null)
-                skin = "md_5";
+            if(location == null || skin==null || lines.isEmpty())
+                throw new IllegalArgumentException("Location, Skin or at least one line is missing");
             try {
                 Class<?> clazz = Class.forName("com.github.unldenis.helper.npc."+PacketReader.Builder.VERSION+".Npc");
                 NPC npc =  (NPC) clazz.getConstructor(PacketReader.class, Location.class, String.class, ArrayList.class).newInstance(packetReader, location, skin, lines);
